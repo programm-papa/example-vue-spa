@@ -1,0 +1,23 @@
+.simplebar-vertical {
+  background-color: #F2F2F2;
+}
+
+.simplebar-vertical .simplebar-scrollbar {
+  cursor: pointer;
+}
+
+.simplebar-vertical .simplebar-scrollbar::before {
+  opacity: .5 !important;
+  background: #000;
+}
+
+.simplebar-content-wrapper {
+  border: none;
+  outline: none;
+}
+
+.simplebar-content-wrapper .simplebar-content {
+  border: none;
+  outline: none;
+}
+/*# sourceMappingURL=style.css.map */

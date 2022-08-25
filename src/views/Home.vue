@@ -1,0 +1,127 @@
+<template>
+  <div class="order-methods">
+    <div class="order-methods_btn create-order" @click="this.openCreateOrder = !this.openCreateOrder">
+      <div class="icon">
+        <svg
+          width="54"
+          height="60"
+          viewBox="0 0 54 60"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M35.75 6.66659H6.58333V53.3333H47.4167V18.3333H35.75V6.66659ZM0.75 3.72659C0.75 2.12825 2.05375 0.833252 3.66375 0.833252H38.6667L53.25 15.4166V56.2295C53.2527 56.6125 53.1799 56.9923 53.0358 57.3472C52.8917 57.7021 52.6791 58.0252 52.4102 58.2979C52.1412 58.5706 51.8212 58.7877 51.4684 58.9368C51.1155 59.0858 50.7368 59.1639 50.3538 59.1666H3.64625C2.88027 59.1613 2.14713 58.8548 1.60522 58.3134C1.0633 57.7721 0.756109 57.0392 0.75 56.2733V3.72659ZM24.0833 27.0833V18.3333H29.9167V27.0833H38.6667V32.9166H29.9167V41.6666H24.0833V32.9166H15.3333V27.0833H24.0833Z"
+            fill="#F9F6F0"
+          />
+        </svg>
+      </div>
+      <div class="text">Создать заказ</div>
+    </div>
+    <div class="order-methods_btn drafts-order">
+      <div class="icon">
+        <svg
+          width="54"
+          height="60"
+          viewBox="0 0 54 60"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12.4167 12.4999V3.74992C12.4167 2.97637 12.724 2.2345 13.2709 1.68752C13.8179 1.14054 14.5598 0.833252 15.3333 0.833252H50.3333C51.1069 0.833252 51.8488 1.14054 52.3957 1.68752C52.9427 2.2345 53.25 2.97637 53.25 3.74992V44.5833C53.25 45.3568 52.9427 46.0987 52.3957 46.6456C51.8488 47.1926 51.1069 47.4999 50.3333 47.4999H41.5833V56.2499C41.5833 57.8599 40.2708 59.1666 38.6463 59.1666H3.68708C3.30245 59.1689 2.92116 59.0952 2.56511 58.9497C2.20905 58.8042 1.88526 58.5897 1.61234 58.3187C1.33941 58.0477 1.12273 57.7254 0.974742 57.3704C0.826754 57.0153 0.750377 56.6346 0.75 56.2499L0.75875 15.4166C0.75875 13.8066 2.07125 12.4999 3.69292 12.4999H12.4167ZM6.58917 18.3333L6.58333 53.3333H35.75V18.3333H6.58917ZM18.25 12.4999H41.5833V41.6666H47.4167V6.66659H18.25V12.4999ZM12.4167 27.0833H29.9167V32.9166H12.4167V27.0833ZM12.4167 38.7499H29.9167V44.5833H12.4167V38.7499Z"
+            fill="#F9F6F0"
+          />
+        </svg>
+      </div>
+      <div class="text">Черновики</div>
+    </div>
+    <CreateOrderPopUp v-if="openCreateOrder" :openCreateOrder="openCreateOrder" @changePopUpStatus='openCreateOrderChangeStatus'/>
+  </div>
+</template>
+
+<script>
+import CreateOrderPopUp from '../components/CreateOrderPopUp.vue';
+export default {
+  data() {
+    return {
+      openCreateOrder: false,
+    };
+  },
+  components: {
+    CreateOrderPopUp,
+  },
+  methods: {
+    openCreateOrderChangeStatus() {
+      return this.openCreateOrder = !this.openCreateOrder;
+    }
+  }
+};
+</script>
+<style scoped lang="scss">
+.order-methods {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  .order-methods_btn {
+    width: 386px;
+    height: 180px;
+    border-radius: 3px;
+    background-color: #c2a561;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    .icon {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+    .text {
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 28px;
+      color: #f9f6f0;
+    }
+
+    //стили при наведении
+    &:hover {
+      background-color: #f9f6f0;
+      .icon {
+        svg {
+          path {
+            fill: #c2a561;
+          }
+        }
+      }
+      .text {
+        color: #69645e;
+      }
+    }
+    //стили при нажатии
+    &:active {
+      box-shadow: 0px 0px 7px -2px rgba(34, 60, 80, 0.2);
+      opacity: 0.9;
+    }
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  
+}
+@media screen and (max-width: 768px) {
+  .order-methods {
+    flex-direction: column;
+    align-items: center;
+    .order-methods_btn {
+      width: 90%;
+      .text {
+        font-size: calc(16px + 8 * (100vw - 320px) / (768 - 320));
+      }
+    }
+  }
+}
+</style>
